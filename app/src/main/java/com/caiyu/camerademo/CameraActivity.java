@@ -10,13 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.video.Recording;
 import androidx.camera.view.PreviewView;
 
+import com.caiyu.cameraxmanager.camera.CameraManager;
+import com.caiyu.cameraxmanager.camera.RecordingCallback;
+import com.caiyu.cameraxmanager.utils.ToastUtil;
 import com.google.android.material.button.MaterialButton;
 import com.monke.mopermission.MoPermission;
 import com.monke.mopermission.MoPermissionDialog;
 import com.monke.mopermission.OnRequestNecessaryPermissionListener;
-import com.caiyu.camerademo.camera.CameraManager;
-import com.caiyu.camerademo.camera.RecordingCallback;
-import com.caiyu.camerademo.utils.ToastUtil;
 
 import java.util.List;
 

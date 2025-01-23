@@ -1,4 +1,4 @@
-package com.caiyu.camerademo.camera;
+package com.caiyu.cameraxmanager.camera;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
