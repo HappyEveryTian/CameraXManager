@@ -1,4 +1,4 @@
-package com.caiyu.camerademo.utils;
+package com.caiyu.cameraxmanager.utils;
 
 import android.content.Context;
 import android.widget.Toast;

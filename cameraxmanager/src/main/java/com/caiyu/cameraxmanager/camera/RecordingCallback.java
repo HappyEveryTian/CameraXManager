@@ -1,4 +1,4 @@
-package com.caiyu.camerademo.camera;
+package com.caiyu.cameraxmanager.camera;
 
 public interface RecordingCallback {
     public void onInit();
