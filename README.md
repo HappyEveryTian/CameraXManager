@@ -18,7 +18,7 @@ CameraXManager is a library that helps you to use CameraX simply in your Android
     // build.gradle.kts
     dependencies {
         ......
-        implementation("com.github.HappyEveryTian:CameraXManager:1.0")
+        implementation("com.github.HappyEveryTian:CameraXManager:1.0.1")
     }
     ```
 
@@ -27,8 +27,9 @@ CameraXManager is a library that helps you to use CameraX simply in your Android
     ```Java
     // first call init() method to init the camera engin
     // @param Context context should be a LifecycleOwner
+    CameraManager.getInstance().init(context);
     // @param PreviewView previewView is a layout view that can show the preview of the camera which defined in your layout file
-    CameraManager.getInstance().init(context, previewView);
+    // CameraManager.getInstance().init(context, previewView);
     ```
 2. add the callback lisener
     ```Java
@@ -86,3 +87,6 @@ CameraXManager is a library that helps you to use CameraX simply in your Android
     }
     ```
 5. simple usage case is in the module app
+
+## contact me
+*if you have any question or suggestion, please contact me by email: Cy1901753749@gmail.com*
