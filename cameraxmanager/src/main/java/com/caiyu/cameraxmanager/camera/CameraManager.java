@@ -72,6 +72,10 @@ public class CameraManager {
     public CameraManager() {
     }
 
+    public synchronized void init(Context context) {
+        init(context, null);
+    }
+
     public synchronized void init(Context context, PreviewView previewView) {
         release();
         mContext = context;
@@ -94,7 +98,9 @@ public class CameraManager {
         cameraProviderFuture.addListener(() -> {
             try {
                 cameraProvider = cameraProviderFuture.get();
-                bindDefaultPreview();
+                if (mPreviewView != null) {
+                    bindDefaultPreview();
+                }
                 bindDefaultVideoCapture();
                 callback.onInit();
             } catch (ExecutionException | InterruptedException e) {
@@ -106,9 +112,6 @@ public class CameraManager {
     private void openCheck() {
         if (mContext == null) {
             throw new NullPointerException("the param `context` is null, please call init() first");
-        }
-        if (mPreviewView == null) {
-            throw new NullPointerException("the param `mPreviewView` is null, please call init() first");
         }
         if (cameraSelector == null) {
             throw new NullPointerException("the param `cameraSelector` is null, please call init() first");
@@ -129,8 +132,10 @@ public class CameraManager {
                 .build();
 
         // 重新绑定新的预览和视频录制实例
-        unbindPreview();
-        bindPreview();
+        if (mPreviewView != null) {
+            unbindPreview();
+            bindPreview();
+        }
         unbindVideoCapture();
         bindVideoCapture();
     }
@@ -151,10 +156,10 @@ public class CameraManager {
         openCheck();
 
         if (mPreviewView == null | mPreview == null) {
-            throw new NullPointerException("the param `mPreviewView` is null, please call openDefaultCamera() first");
+            throw new NullPointerException("the param `mPreviewView` is null, please call init(context, previewView) first");
         }
         if (cameraProvider == null) {
-            throw new NullPointerException("the param `cameraProvider` is null, please call openDefaultCamera() first");
+            throw new NullPointerException("the param `cameraProvider` is null, please call init(context, previewView) first");
         }
 
         if (cameraProvider.isBound(mPreview)) {
@@ -189,11 +194,11 @@ public class CameraManager {
         openCheck();
 
         if (videoCapture == null) {
-            throw new NullPointerException("the param `videoCapture` is null, please call openDefaultCamera() first");
+            throw new NullPointerException("the param `videoCapture` is null, please call init(context) or init(context, previewView) first");
         }
 
         if (cameraProvider == null) {
-            throw new NullPointerException("the param `cameraProvider` is null, please call openDefaultCamera() first");
+            throw new NullPointerException("the param `cameraProvider` is null, please call init(context) or init(context, previewView) first");
         }
 
         if (cameraProvider.isBound(videoCapture)) {
