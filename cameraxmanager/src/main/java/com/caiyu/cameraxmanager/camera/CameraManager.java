@@ -190,7 +190,7 @@ public class CameraManager {
         }
     }
 
-    public void bindVideoCapture() {
+    private void bindVideoCapture() {
         openCheck();
 
         if (videoCapture == null) {
@@ -208,7 +208,7 @@ public class CameraManager {
         cameraProvider.bindToLifecycle((LifecycleOwner) mContext, cameraSelector, videoCapture);
     }
 
-    public void unbindVideoCapture() {
+    private void unbindVideoCapture() {
         if (cameraProvider != null && videoCapture != null && cameraProvider.isBound(videoCapture)) {
             cameraProvider.unbind(videoCapture);
         }
