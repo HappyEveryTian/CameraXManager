@@ -18,7 +18,7 @@ CameraXManager is a library that helps you to use CameraX simply in your Android
     // build.gradle.kts
     dependencies {
         ......
-        implementation("com.github.HappyEveryTian:CameraXManager:1.0.1")
+        implementation("com.github.HappyEveryTian:CameraXManager:1.0.2")
     }
     ```
 
@@ -66,8 +66,11 @@ CameraXManager is a library that helps you to use CameraX simply in your Android
                     }
                 });
     ```
-
-3. get the recording object to control
+3. when you want to switch the camera, just call the method below:
+   ```Java
+   CameraManager.getInstance().switchCamera();
+   ```
+4. get the recording object to control
     ```Java
     // the param is the file name which is nullable
     Recording recording = CameraManager.getInstance().startRecord(null);
@@ -77,7 +80,7 @@ CameraXManager is a library that helps you to use CameraX simply in your Android
     recording.stop();
     ```    
 
-4. **remember to release the camera engin when you don't need it**, for example:
+5. **remember to release the camera engin when you don't need it**, for example:
     ```Java
     // MainActivity.java
     @Override
@@ -86,7 +89,7 @@ CameraXManager is a library that helps you to use CameraX simply in your Android
         CameraManager.getInstance().release();
     }
     ```
-5. simple usage case is in the module app
+6. simple usage case is in the module app
 
 ## contact me
 *if you have any question or suggestion, please contact me by email: Cy1901753749@gmail.com*
